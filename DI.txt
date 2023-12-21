@@ -1,0 +1,30 @@
+1.
+a.) Was ist Dependency Injection?
+b.) Warum benötigen wir das?
+
+a.) Essentiell beschreibt Dependency Injection (DI) das Verwalten einer Abhängigkeit in Klassen/Modulen/Komponenten
+    einer Software. Es definiert welche Schnittstellen ein Objekt zum Erfüllen seiner Aufgaben benötigt.
+
+b.) Am Ende ist programmieren das Verwalten von Informationen. Diese Verwaltung geht mit Abhängigkeiten einher.
+	Um eine höchstmögliche Flexibilität zu erlangen wollen wir uns nicht direkt von einer Implementierung abhängig
+	machen, sondern von einer Definition einer Schnittstelle.
+
+	Erweitert kann man also sagen Programmieren ist das verwalten von Abhängigkeiten. Und abhängig sein möchten 
+	wir nur von klar definierten Schnittstellen ohne die unterliegende Implementierung zu kennen (für mehr Infos 
+	siehe auch Aggregation und Komposition anstelle von Vererbung in diesem Kontext).
+
+
+
+2.
+a.) Was ist ein IOC Container und was es mit DI zu tun?
+b.) Welche Vorteile bietet ein IOC Container?
+
+a.) Ein Inversion of Control (IOC) Container beschreibt, das eine Komponente nicht mehr seine eigene
+	Abhängigkeiten instanziiert und so einen kompletten Abhängigkeitsgraph darstellt. Stattdessen wird die 
+	Controller invertiert, also an eine darüberliegende Stelle abgegeben, die dann wiederum die Abhängigkeit 
+	instanziiert und übergibt.
+
+b.) Ein IOC Container ermöglicht eine automatisierte DI über die Registrierung und das Auflösen von definierten Services.
+	Dadurch kann man sich anstelle der Abhängigkeitsverwaltung auf die Anwendung von Business Logik beschränken.
+	Sobald das Konzept etwas verinnerlicht wurde, erhöht es die Produktivität, Wartbarkeit und Klarheit des Systems
+	um Längen.

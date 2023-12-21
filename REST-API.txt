@@ -1,0 +1,50 @@
+Pro HTTP-Request ein thread, App ist also threadsave. Ausnahmen wir Singelton...
+
+app.UseMvcWithDefaultRoute();
+
+app.UseMvc();
+
+[Route("attribute-route")]	(Attribute)
+
+int? oder .Value   in Signatur = nullables
+
+? = optional
+Controller- & Methoden Routes werden konkateniert.
+
+QueryString = ...GetAll?articleNumber=EAN-124
+
+ModelBinding = Ueberführung Inputwerte von Http-Request zu C# Objekt
+
+Klasse Controller vererbt Context-Objects wie Http- Request, Response, ModelState, User, RouteData...
+Klasse Controller ist nur ein Delegat für Requests (Endpunkt für Requests - satble )
+Klasse Controller soll Zustandslos sein, da sie bei jedem HTTP-Request neu instanziirt wird.
+
+ActionResult anstelle von Http-Response
+
+Model Validation Feature mit  if (ModelState.IsValid == false) {}   oder DataAnnotations
+
+[ApiController]
+- macht Attribut Routing obligatorisch
+- [FromBody] [FromQuery] Attribute nicht mehr nötig (replace with nameModel)
+- ModelState wird automatisch validiert
+- Error Objekte als JSON anstelle von HTML
+
+
+DI = Einmal Service registrieren und man kann ihn dann überall verwenden.
+ServiceLocator = Services manuell auflösen ( mit register / resolve [bei zu häufiger Verwendung = Antipattern])  
+Abhängikeiten weiter oben auflösen, nicht im Kunstruktor!
+
+//Strartup  - Transient = Objects are different per Instance / Controller
+// 			- Scoped = Ojects are same through the request
+//			- Singelton = Objects are the same for every request during application lifetime
+
+public void ConfigureServices(IServiceCollection services) // IServiceCollection = repräsentiert IOC Container
+        {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<RabbitMQ>(Configuration.GetSection(nameof(RabbitMQ)));
+            
+            services.AddTransient<OrderUseCases>();			// registrieren des Typs
+            services.AddTransient<SupplierUseCases>();		// registrieren des Typs
+
+JWT (JSON Web Token) = Verification by digital signature (stateless)
+OAuth
